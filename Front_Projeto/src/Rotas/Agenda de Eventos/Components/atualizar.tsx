@@ -2,8 +2,10 @@ import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 import type { FormEvent } from "react"
 import { api } from "@/components/ui/api";
+import { useParams } from "react-router-dom";
 
-export default function Update(id:number){
+export default function Update(){
+    const { id } = useParams();
     const titleRef = useRef<HTMLInputElement | null>(null)
     const descriptionRef = useRef<HTMLInputElement | null>(null)
     const locationRef = useRef<HTMLInputElement | null>(null)
@@ -23,15 +25,22 @@ export default function Update(id:number){
                 alert("Por Favor, adicione todos os elementos")
             )
         }
-        const response = await api.put("/event"+id,{
+        try{
+            const response = await api.put(`/event/${id}`,{
                 title: titleRef.current?.value,
                 description: descriptionRef.current?.value,
                 price: Number(priceRef.current?.value),
                 location: locationRef.current?.value,
                 date: dateRef.current?.value            
-        })
-
-        console.log(response.data)
+            })
+            if(response.status === 200){
+                // TENTA VOLTAR PARA A PAGINA DE EVENTOS POR FAVOR
+            }
+            
+        }catch(e){
+            console.log(e)
+        }
+        
     }
 
   return (
@@ -71,7 +80,7 @@ export default function Update(id:number){
             placeholder="Insira a data do evento" 
             ref={dateRef}
             className="text-black border border-azul p-4 rounded-xl w-full"/>
-        <Button variant="outline" className="w-[20%] text-white bg-azul border border-azul hover:bg-blue-100 font-bold">Atualizar</Button>
+        <Button type="submit" variant="outline" className="w-[20%] text-white bg-azul border border-azul hover:bg-blue-100 font-bold">Atualizar</Button>
       </form>
     </div>
   )

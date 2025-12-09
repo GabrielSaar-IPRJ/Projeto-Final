@@ -43,8 +43,13 @@ function Cards(props: props){
                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 11l8 3l8-3"/></svg> 
             </div>
             :
-            <div className="m-4 flex flex-col bg-[#0b2781] rounded-4xl hover:cursor-pointer gap-2 p-4 divide-y divide-dashed divide-white">
-                <a className="w-full text-center text-white self-center font-bold"> {props.name} </a>
+            <div className="lg:m-4 flex flex-col bg-[#0b2781] rounded-4xl hover:cursor-pointer gap-2 p-4 divide-y divide-dashed divide-white">
+                <div className="p-4 w-full flex flex-row bg-[#0b2781]">
+                    <a className="w-full text-center text-white self-center font-bold"> {props.name} </a>
+                    <Button variant="outline" onClick={props.onDelete} className="self-center hover:cursor-pointer ">
+                        <Trash2/>
+                    </Button>
+                </div>
                 <div className="flex flex-row justify-center items-center">
                     <div className="w-[40%] p-4 flex flex-col text-start">
                         {props.date instanceof Date ?
@@ -55,19 +60,14 @@ function Cards(props: props){
                         <a className=" text-white"> Local: {props.local} </a>
                         <a className=" text-white"> Preço do Ingresso: R${props.price} </a>
                     </div>
-                    <div className="flex flex-col  ml-[150px] items-end">
+                    <div className="flex flex-col  lg:ml-[150px] items-end">
                         <div className="p-4 w-[60%] flex flex-row justify-end items-end bg-[#0b2781]">
-                            <Link to="/atualizar"  className="self-center hover:cursor-pointer ">
+                            <Link to={`/atualizar/${props.id}`} className="self-center hover:cursor-pointer text-white">
                                 <ListRestart />
                             </Link>
                         </div>
                         <div className="p-4 w-[60%] flex flex-row justify-end items-end bg-[#0b2781]">
                             <Button variant="outline" className="self-center hover:cursor-pointer ">Inscrever-se</Button>
-                        </div>
-                        <div className="p-4 w-[60%] flex flex-row justify-end items-end bg-[#0b2781]">
-                            <Button variant="outline" onClick={props.onDelete} className="self-center hover:cursor-pointer ">
-                                <Trash2/>
-                            </Button>
                         </div>   
                     </div>
                 </div>

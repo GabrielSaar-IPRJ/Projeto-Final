@@ -7,6 +7,7 @@ import Erro from "./Rotas/Erro/Erros";
 import Header from "./Rotas/Header/Header";
 import Agendar from "./Rotas/Agendar Evento/agendar";
 import Cadastro from "./Rotas/cadastro/Cadastro";
+import Update from "./Rotas/Agenda de Eventos/Components/atualizar";
 function RoutesApp() {
     return (
         <BrowserRouter>
@@ -17,6 +18,7 @@ function RoutesApp() {
                 <Route path="/eventos" element={<Eventos/>} />
                 <Route path="/agendar" element={<Agendar/>} />
                 <Route path="/cadastro" element={<Cadastro/>}/>
+                <Route path="/atualizar/:id" element={<Update />}/>
                 <Route path="*" element={<Erro/>} />
             </Routes>
         </BrowserRouter>
