@@ -3,6 +3,7 @@ import { useRef } from "react";
 import type { FormEvent } from "react"
 import { api } from "@/components/ui/api";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Update(){
     const { id } = useParams();
@@ -11,7 +12,7 @@ export default function Update(){
     const locationRef = useRef<HTMLInputElement | null>(null)
     const priceRef = useRef<HTMLInputElement | null>(null)
     const dateRef = useRef<HTMLInputElement | null>(null)
-
+    const navigate = useNavigate()
     async function handleSubmit(e:FormEvent){
         e.preventDefault()
         if(
@@ -34,7 +35,7 @@ export default function Update(){
                 date: dateRef.current?.value            
             })
             if(response.status === 200){
-                // TENTA VOLTAR PARA A PAGINA DE EVENTOS POR FAVOR
+                navigate("/eventos")
             }
             
         }catch(e){

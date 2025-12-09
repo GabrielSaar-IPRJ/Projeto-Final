@@ -10,7 +10,6 @@ interface props{
     local: string;
     price: number; 
     description: string;
-    onUpdate: ()=>void;
     onClick: () => void;
     onDelete: () => void;
 }

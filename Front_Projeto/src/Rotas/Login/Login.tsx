@@ -11,7 +11,7 @@ function Login() {
     //aqui pra fazer a verificaçao com o backend depois
     if (email === "admin@teste.com" && password === "1234") {
       alert("Login bem-sucedido!");
-      navigate("/"); //me lembremmmmmmmmmmmmmmmmmmmmm ou tentem fazer tbm, nao vou reclamar 😁
+      navigate("/");
 
     } else {
       alert("Email ou senha incorretos");
@@ -56,7 +56,7 @@ function Login() {
 
       
       <div className="flex items-center justify-center text-center pt-2">
-        <Link to='/agendar' 
+        <Link to='/cadastro' 
             className="justify-center w-full bg-brVerde text-white py-2 rounded hover:bg-brAzul active:bg-brAzul transition-colors"
           >
             Cadastre-se

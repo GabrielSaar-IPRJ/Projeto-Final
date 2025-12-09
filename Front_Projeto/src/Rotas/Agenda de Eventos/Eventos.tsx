@@ -48,9 +48,6 @@ function Eventos(){
         }
     }
     
-    async function update(id:number) {
-        update(id)
-    }
     
     return(
         <>
@@ -70,7 +67,6 @@ function Eventos(){
                                     local={cards.location}
                                     price={cards.price}
                                     description={cards.description}
-                                    onUpdate={()=> update(cards.id)}
                                     onDelete={() => handleDelete(cards.id)}
                                     onClick={() => { setFormOpen(true); setFormIndex(cards.id); } } />
                             );
